@@ -72,5 +72,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ## This is the Budget-App-Front-End deployed URL address:
 To see the app [Click Here](https://dashing-brigadeiros-2dfa10.netlify.app)
 ```
-This is the Project deployed URL: https://dashing-brigadeiros-2dfa10.netlify.app
+This is the Front-End deployed URL: https://dashing-brigadeiros-2dfa10.netlify.app
 ```
