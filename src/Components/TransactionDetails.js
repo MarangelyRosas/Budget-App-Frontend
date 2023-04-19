@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import {  useParams} from "react-router-dom";
+import { useParams, useNavigate} from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function TransactionDetails() {
   const [trans, setTrans] = useState({});
   let { id } = useParams();
-//   let navigate = useNavigate();
+  let navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -15,53 +16,46 @@ function TransactionDetails() {
         console.log(response.data);
       })
       .catch(() => {
-        // navigate("/not-found");
+         navigate("/not-found");
       });
-  }, [id]);
+  }, [id, navigate]);
   
-//   const handleDelete = () => {
-//     axios
-//       .delete(`${process.env.REACT_APP_API_URL}/transaction/${index}`)
-//       .then(() => {
-//         navigate("/transactions");
-//       });
-//   };
+  const handleDelete = () => {
+    axios
+      .delete(`${process.env.REACT_APP_API_URL}/transactions/${id}`)
+      .then(() => {
+        navigate("/transactions");
+      });
+  };
 
-  
- 
   return (
     <article>
       <h3>
         {trans.date ? <span>⭐️</span> : null} {trans.date}
       </h3>
+
       <h5>
-        <span>
-          {trans.item_name}
-        </span>{" "}
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        {/* {transaction.url} */}
+        <span> {trans.item_name} </span>{" "} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
       </h5>
-      {/* <h6>{transaction.category}</h6>
-      <p>{transaction.description}</p> */}
-      <div className="showNavigation">
-        <div>
-          {" "}
-          {/* <Link to={`/transactions`}> */}
-            <button>Back</button>
-          {/* </Link> */}
+      
+        <div className="showNavigation">
+            <div>
+                {" "}
+                    <Link to={`/transactions`}>
+                        <button>Back</button>
+                    </Link>
+            </div>
+            <div>
+                {" "}
+                    <Link to={`/transactions/${id}/edit`}>
+                        <button>Edit</button>
+                    </Link>
+            </div>
+            <div>
+                {" "}
+                    <button onClick={handleDelete}>Delete</button>
+            </div>
         </div>
-        <div>
-          {" "}
-          {/* <Link to={`/transactions/${index}/edit`}> */}
-            <button>Edit</button>
-          {/* </Link> */}
-        </div>
-        <div>
-          {" "}
-          {/* <button onClick={handleDelete}>Delete</button> */}
-          <button>Delete</button>
-        </div>
-      </div>
     </article>
   );
 }

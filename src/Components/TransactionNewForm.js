@@ -18,10 +18,6 @@ function TransactionNewForm() {
     setTransaction({ ...transaction, [event.target.id]: event.target.value });
   };
 
-//   const handleCheckboxChange = () => {
-//     setTransaction({ ...transaction, from: !transaction.from });
-//   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
@@ -59,7 +55,7 @@ function TransactionNewForm() {
         <input
           id="date"
           name="date"
-          type="number"
+          type="text"
           value={transaction.date}
           onChange={handleTextChange}
         />

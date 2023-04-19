@@ -20,9 +20,9 @@ function Transactions() {
         <table>
           <thead>
             <tr>
-              <th></th>
-              <th>Bank Account</th>
-              <th>View Transaction</th>
+              <th>Date</th>
+              <th>Item Name</th>
+              <th>Amount</th>
             </tr>
           </thead>
           <tbody>
