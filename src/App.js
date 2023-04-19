@@ -8,8 +8,8 @@ import Index from './Pages/Index';
 import New from './Pages/New';
 import Show from './Pages/Show';
 import Edit from './Pages/Edit';
-import FourOFour from './Pages/FourOFour';
-import TransactionDetails from './Components/TransactionDetails';
+//import FourOFour from './Pages/FourOFour';
+//import TransactionDetails from './Components/TransactionDetails';
 
 function App() {
   return (
