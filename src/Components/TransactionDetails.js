@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 
 function TransactionDetails() {
   const [trans, setTrans] = useState({});
-  let { id } = useParams();
+  let { index } = useParams;
   let navigate = useNavigate();
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/transactions/${id}`)
+      .get(`${process.env.REACT_APP_API_URL}/transactions/${index}`)
       .then((response) => {       
         setTrans(response.data);
         console.log(response.data);
@@ -18,11 +18,11 @@ function TransactionDetails() {
       .catch(() => {
          navigate("/not-found");
       });
-  }, [id, navigate]);
+  }, [index, navigate]);
   
   const handleDelete = () => {
     axios
-      .delete(`${process.env.REACT_APP_API_URL}/transactions/${id}`)
+      .delete(`${process.env.REACT_APP_API_URL}/transactions/${index}`)
       .then(() => {
         navigate("/transactions");
       });
@@ -47,7 +47,7 @@ function TransactionDetails() {
             </div>
             <div>
                 {" "}
-                    <Link to={`/transactions/${id}/edit`}>
+                    <Link to={`/transactions/${index}/edit`}>
                         <button>Edit</button>
                     </Link>
             </div>
